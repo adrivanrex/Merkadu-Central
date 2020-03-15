@@ -1,0 +1,161 @@
+<div class="row  border-bottom white-bg dashboard-header">
+    <div class="col-sm-3">
+
+        <h2>Welcome {{firstName}}</h2>
+        <small>Latest notifications here :)</small>
+        <ul class="list-group clear-list m-t">
+            <li class="list-group-item fist-item">
+                <strong>ID:</strong>
+                <span>{{username}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Account Entry:</strong>
+                <span>90 BRV</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Date Registered:</strong>
+                <span>{{registrationTime}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Direct Sponsor ID:</strong>
+                <span>{{sponsor}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Placement Sponsor ID:</strong>
+                <span>{{placement}}</span>
+            </li>
+            <li class="list-group-item">
+                <strong>Placement Side:</strong>
+                <span>{{placementSide}}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-9">
+        <div class="row">
+            <a href="#/dashboards/data_tables" 
+class="btn btn-sm btn-primary pull-right m-t-n-xs">Encash Available Balance</a>
+            <br>
+            <br>
+        </div>
+        <div class="row" style="background-color: green">
+
+                <h2 style="color:white;padding-right;margin-left: 20px">Commission Summary</h2>
+            </div>
+        <!--
+        <div class="flot-chart dashboard-chart" ng-controller="dashboardFlotOne as chart">
+            <div flot class="flot-chart-content" dataset="chart.flotData" options="chart.flotOptions"></div>
+        </div>
+        -->
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!--
+                <span class="label label-success pull-right">Monthly</span>
+                -->
+                        <h5>Direct Referal</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{directReferalTotalBalance}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-info pull-right">Annual</span>-->
+                        <h5>Total Encash</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{totalEncash}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-primary pull-right">Today</span> -->
+                        <h5>Available Balance</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{availableBalance}}</h1>
+                            
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-primary pull-right">Today</span> -->
+                        <h5>Running Total</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{balance}}</h1>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:green">
+            <h2 style="color:white;margin-left: 20px">Points Summary</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!--
+                <span class="label label-success pull-right">Monthly</span>
+                -->
+                        <h5>Points Left</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{pointsLeft}} BRV</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-info pull-right">Annual</span>-->
+                        <h5>Points pull-right</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{pointsRight}} BRV</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-primary pull-right">Today</span> -->
+                        <h5>On-hold Points Left</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">0</h1>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <!-- <span class="label label-primary pull-right">Today</span> -->
+                        <h5>On-hold Points Right</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">0</h1>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>

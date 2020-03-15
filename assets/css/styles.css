@@ -1,0 +1,145 @@
+.site-menubar-body { height: 100%; }
+.avatar-name { position: relative; top: -5px; padding-right: 5px; }
+.site-navbar { background-color: #FFF; }
+.site-navbar .dropdown-menu { margin-top: 2px; }
+.menu-spacer { height: 30px; }
+
+img { -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none; user-drag: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
+
+.checkbox-custom input[type=checkbox]:focus, .radio-custom input[type=radio]:focus { outline: none; }
+.radio-custom input[type=radio], .checkbox-custom input[type=checkbox], .checkbox-custom label::before { cursor: pointer; }
+.radio-default input[type=radio]:checked+label::before { outline: none; }
+.radio-custom label::after { -webkit-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); transform: scale(0,0); -webkit-transition: all 200ms; -moz-transition: all 200ms; -o-transition: all 200ms; transition: all 200ms; }
+.radio-custom input[type=radio]:checked+label::after { -webkit-transform: scale(3,3); -ms-transform: scale(3,3); -o-transform: scale(3,3); transform: scale(3,3); }
+.checkbox-custom input[type=checkbox][disabled], .radio-custom input[type=radio][disabled],
+.checkbox-custom input[type=checkbox][disabled]+label, .radio-custom input[type=radio][disabled]+label { cursor: not-allowed; }
+
+body { opacity: 0; -webkit-transition: opacity 200ms; -moz-transition: opacity 200ms; -o-transition: opacity 200ms; transition: opacity 200ms; }
+body.site-menubar-unfold,
+body.site-menubar-fold { opacity: 1; }
+
+.order-product-list { border: 1px solid #e4eaec; max-height: 300px; overflow: auto; border-radius: 3px; }
+.order-product-list .list-group { margin: 0; }
+.order-product-list .list-group-item { border-bottom: 1px solid #e4eaec; margin-bottom: 0; border-radius: 0; }
+.order-product-list .list-group-item:last-child { border-width: 0; }
+
+.selected-products .table>tbody>tr>td { vertical-align: middle; }
+.selected-products .spinnerUi>input[type=text] { width: 90px; }
+
+.profile-img { margin: 0 auto; max-width: 180px; }
+.table-desc th { font-size: 13px; font-weight: 500; }
+.no-border { border: 0 !important; }
+
+.has-success .form-control,
+.has-success .form-control.focus, .has-success .form-control:focus { border-color: #E4EAEC; }
+.has-success .checkbox, .has-success .checkbox-inline, .has-success .control-label, .has-success .help-block, .has-success .radio, .has-success .radio-inline, .has-success.checkbox label, .has-success.checkbox-inline label, .has-success.radio label, .has-success.radio-inline label { color: #76838F; }
+
+.summary-errors ul { list-style: none; padding: 0; }
+.summary-errors ul li { padding: 0; }
+
+table.table.dataTable { margin: 20px 0; }
+table.table.dataTable th { padding: 12px 8px; }
+table.table.dataTable thead .sorting:after, table.table.dataTable thead .sorting_asc:after, table.table.dataTable thead .sorting_desc:after { top: 12px; }
+table.table.dataTable td { padding: 18px 8px; }
+table.table.dataTable td.tablelistaction { text-align: center; padding: 12px 5px; }
+
+/* Errors and profiler */
+.site-menubar-fold #codeigniter_profiler,
+.site-menubar-fold pre { margin-left: 90px; }
+.site-menubar-unfold #codeigniter_profiler,
+.site-menubar-unfold pre { margin-left: 260px; }
+
+/* genealogy */
+.node-hover div.node { border-color: #46BE8A !important; }
+.node-hover .right { border-left-color: #46BE8A !important; }
+.node-hover .left { border-right-color: #46BE8A !important; }
+.node-hover .top { border-top-color: #46BE8A !important; }
+.emptynode.right { border-left-style: dotted !important; border-left-color: #C9D4DA !important; }
+.emptynode.left { border-right-style: dotted !important; border-right-color: #C9D4DA !important; }
+.emptynode.top { border-top-style: dotted !important; border-top-color: #C9D4DA !important; }
+td.emptynode div.node { border-style: dotted !important;  border-color: #C9D4DA !important; }
+td.emptynode .status.empty { display: none; }
+td.emptynode .midtext-cell { color: #C9D4DA; text-transform: uppercase; }
+.user-genealogy { width: 100%; border: 0; min-height: 200px; }
+.genealogy-actions { position: absolute; top: 0; left: 0; }
+.genealogy-actions ul { margin-top: 10px; }
+.genealogy-actions ul li { position: relative; padding-left: 16px; font-size: 11px; text-transform: uppercase; }
+.genealogy-actions ul li:before { content: " "; border-radius: 5px; width: 10px; height: 10px; position: absolute; left: 0; top: 50%; margin-top: -6px; }
+.genealogy-actions ul li.active:before { background-color: #36AB7A }
+.genealogy-actions ul li.onhold:before { background-color: #F9CD48 }
+.genealogy-actions ul li.inactive:before { background-color: #D6494B }
+.genealogy-actions ul li.title { padding-left: 0; font-size: 14px; }
+
+#genealogy_append .status > span:before { content: " "; border-radius: 5px; width: 10px; height: 10px; display: inline-block; margin-right: 5px; }
+#genealogy_append .status.active > span:before { background-color: #36AB7A }
+#genealogy_append .status.onhold > span:before { background-color: #F9CD48 }
+#genealogy_append .status.inactive > span:before { background-color: #D6494B }
+
+.node.level3 { position: relative; }
+.node.level3 .arrow-down { position: absolute; width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 18px solid #5cd29d; bottom: -25px; left: 50%; margin-left: -20px; }
+.no-downlines { font-size: 18px; padding: 20px 0; }
+.tab-loader { background: url('../images/loading.gif') no-repeat 50%; height: 80px; position: absolute; width: 100%; left: 0; top: 50%; margin-top: -30px; }
+
+.img-upload-wrap { text-align: center; }
+.img-upload-wrap img { max-width: 150px; padding: 0 20px; }
+.img-upload-btn-wrap .btn { display: block; }
+.img-upload-btn-wrap .btn + .btn { margin-top: 10px; }
+.img-upload-img-wrap,
+.img-upload-btn-wrap { display: inline-block; vertical-align: middle; }
+
+.responsive-tab .panel-body .nav-tabs { margin: 0 -30px; }
+.responsive-tab .panel-body .panel-group.responsive { padding-top: 30px; }
+.responsive-tab .panel-body .panel-group.responsive .panel-title { padding: 0; }
+.responsive-tab .panel-body .panel-group.responsive a.accordion-toggle { display: block; padding: 15px 20px; z-index: 1 }
+.responsive-tab .panel-body .panel-group.responsive a.accordion-toggle:hover,
+.responsive-tab .panel-body .panel-group.responsive a.accordion-toggle:focus { text-decoration: none; }
+.responsive-tab .panel-body .panel-group.responsive .panel-collapse .panel-body { padding-top: 10px; }
+.responsive-tab .panel-body .panel-group.responsive .panel-collapse .table { margin-top: 0; }
+
+.points-filter { color: #76838f; text-decoration: none !important; }
+.points-filter:hover { color: #62a8ea; text-decoration: underline !important; }
+
+.dt-button { padding: 6px 15px;
+    font-size: 14px;
+    line-height: 1.57142857;
+    border-radius: 3px;
+    -webkit-transition: border .2s linear,color .2s linear,width .2s linear,background-color .2s linear;
+    -o-transition: border .2s linear,color .2s linear,width .2s linear,background-color .2s linear;
+    transition: border .2s linear,color .2s linear,width .2s linear,background-color .2s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
+    color: #fff;
+    background-color: #62a8ea;
+    border-color: #62a8ea;
+    display: inline-block;
+    margin-bottom: 10px;
+ }
+
+.dt-button + .dt-button { margin-left: 10px; }
+
+@media (min-width: 768px) {
+    .btn-mobile-profile { display: none; }
+}
+
+@media (max-width: 767px) {
+    .btn-mobile-profile { float: right; margin-right: 5px; }
+    .btn-mobile-profile .dropdown-toggle { background: none; border: 0 none; padding: 15px 10px 15px 0; }
+    .btn-mobile-profile .dropdown-toggle .avatar { width: 36px; }
+    
+    .site-menubar-fold #codeigniter_profiler { margin-left: auto; }
+    .site-menubar-unfold #codeigniter_profiler { margin-left: auto; }
+}
+
+@media (max-width: 991px) {
+    .profile-img { margin: 0 auto 15px; }
+    .profile-img img { margin: 0 auto; }
+}
+
+@media (max-width: 500px) { 
+    .page-title { text-align: center; margin-bottom: 10px; }
+    .page-header-actions { position: initial; -webkit-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); text-align: center; }    
+}
+@media (max-width: 420px) { 
+    .site-navbar .navbar-header .navbar-brand { padding: 22px 0; }
+    .navbar-brand-text { font-size: 16px; }
+    .navbar-brand>.navbar-brand-logo { height: 28px; }
+}

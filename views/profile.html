@@ -1,0 +1,78 @@
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+    <div class="col-lg-7">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>User 
+                    <small>Personal Information</small>
+                </h5>
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-12 b-r">
+
+                        <p>Improve your password.</p>
+
+                        <form role="form">
+                            <div class="form-group"><label>Last Password</label> <input ng-model="lastPassword" id="lastPassword"  type="password" placeholder="Enter your current password" class="form-control"></div>
+                            <div class="form-group"><label>New Password</label> <input ng-model="newPassword" id="newPassword" type="password" placeholder="Enter New Password" class="form-control"></div>
+                            <div class="form-group"><label>Verify New Password</label> <input ng-model="verifyNewPassword" id="verifyNewPassword" type="password" placeholder="Verify New Password" class="form-control"></div>
+                            <div>
+                                <button id="updatePassword" ng-click="updatePassword(lastPassword,newPassword,verifyNewPassword)" class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Update</strong></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!--
+                    <div class="col-sm-6"><h4>Not a member?</h4>
+
+                        <p>You can create an account:</p>
+
+                        <p class="text-center">
+                            <a href=""><i class="fa fa-sign-in big-icon"></i></a>
+                        </p>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="col-lg-5">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Horizontal form</h5>
+
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal">
+                    <p>Sign in today for more expirience.</p>
+
+                    <div class="form-group"><label class="col-lg-2 control-label">Email</label>
+
+                        <div class="col-lg-10"><input type="email" placeholder="Email" class="form-control"> <span class="help-block m-b-none">Example block-level help text here.</span>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-2 control-label">Password</label>
+
+                        <div class="col-lg-10"><input type="password" placeholder="Password" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <div class="checkbox"> <input icheck type="checkbox" ng-model="main.checkOne"><i></i> Remember me </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-sm btn-white" type="submit">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    -->
+</div>
+</div>

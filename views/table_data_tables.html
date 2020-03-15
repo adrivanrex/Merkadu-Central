@@ -1,0 +1,59 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <br>
+    <div class="col-lg-4">
+        <div class="input-group"><input type="text" ng-model="encashAmount" placeholder="Amount "class="form-control"> <span class="input-group-btn"> <button  ng-click="encash(encashAmount)"
+ type="button" class="btn btn-primary">Encash   
+    </button> </span></div>
+        
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h3> There is a 10% fee for every cashout transaction</h3>
+    <div ibox-tools></div>
+</div>
+<div class="ibox-content">
+
+<table datatable="" class="table table-striped table-bordered table-hover dataTables-example">
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Encash Code</th>
+    <th>Date</th>
+</tr>
+</thead>
+<tbody>
+
+<tr data-ng-repeat="i  in cashList | orderBy: i.id"" class="gradeX">
+    <td>{{i.id}}</td>
+    <td>{{i.cashoutMoney}}
+    </td>
+    <td>{{i.status}}</td>
+    <td class="center">{{i.cashoutCode}}</td>
+     <td class="center">{{i.date}}</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>

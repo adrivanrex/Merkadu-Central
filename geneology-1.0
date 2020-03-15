@@ -1,0 +1,623 @@
+<?php
+include_once('class/class.manageUsers.php');
+error_reporting(0);
+$datetime = date_create()->format('Y-m-d H:i:s');
+//error_reporting(0);
+$users = new ManageUsers();
+
+$username = $_GET['username'];
+
+$data = $users->GetUserInfo($username);
+$firstName = $data[0]["firstName"];
+$lastName = $data[0]["lastName"];
+$username = $data[0]["username"];
+$fullName = "".$firstName." ".$lastName."";
+$leftDownline = $data[0]["leftDownline"];
+$rightDownline = $data[0]["rightDownline"];
+
+$secondLeft = $users->GetUserInfo($leftDownline);
+$secondLeftFirstName = $secondLeft[0]["firstName"];
+$secondLeftLastName = $secondLef[0]["lastName"];
+$secondLeftUserName = $secondLeft[0]["username"];
+$secondLeftDownlineLeft = $secondLeft[0]["leftDownline"];
+$secondLeftDownlineRight = $secondLeft[0]["rightDownline"];
+$secondLeftFullName = "".$secondLeftFirstName." ".$secondLeftLastName."";
+
+$secondRight = $users->GetUserInfo($rightDownline);
+$secondRightfirstName = $secondRight[0]["firstName"];
+$secondRightLastName = $secondRight[0]["lastName"];
+$secondRightUsername = $secondRight[0]["username"];
+$secondRightDownlineLeft = $secondRight[0]["leftDownline"];
+$secondRightDownlineRight = $secondRight[0]["rightDownline"];
+$secondRightFullName = "".$secondRightfirstName." ".$secondRightLastName."";
+
+$ThirdLeftDownlineOfSecondRight = $users->GetUserInfo($secondRightDownlineRight);
+$ThirdLeftDownlineOfSecondRightfirstName = $ThirdLeftDownlineOfSecondRight[0]["firstName"];
+$ThirdLeftDownlineOfSecondRightLastName = $ThirdLeftDownlineOfSecondRight[0]["lastName"];
+$ThirdLeftDownlineOfSecondRightUsername = $ThirdLeftDownlineOfSecondRight[0]["username"];
+$ThirdLeftDownlineOfSecondRightDownlineLeft = $ThirdLeftDownlineOfSecondRight[0]["leftDownline"];
+$ThirdLeftDownlineOfSecondRightDownlineRight = $ThirdLeftDownlineOfSecondRight[0]["rightDownline"];
+$ThirdLeftDownlineOfSecondRightFullName = "".$ThirdLeftDownlineOfSecondRightfirstName." ".$ThirdLeftDownlineOfSecondRightLastName."";
+
+
+$ThirdRightDownlineOfSecondLeft = $users->GetUserInfo($secondLeftDownlineRight);
+$ThirdRightDownlineOfSecondLeftfirstName = $ThirdRightDownlineOfSecondLeft[0]["firstName"];
+$ThirdRightDownlineOfSecondLeftLastName = $ThirdRightDownlineOfSecondLeft[0]["lastName"];
+$ThirdRightDownlineOfSecondLeftUsername = $ThirdRightDownlineOfSecondLeft[0]["username"];
+$ThirdRightDownlineOfSecondLeftDownlineLeft = $ThirdRightDownlineOfSecondLeft[0]["leftDownline"];
+$ThirdRightDownlineOfSecondLeftDownlineRight = $ThirdRightDownlineOfSecondLeft[0]["rightDownline"];
+$ThirdRightDownlineOfSecondLeftFullName = "".$ThirdRightDownlineOfSecondLeftfirstName." ".$ThirdRightDownlineOfSecondLeftLastName."";
+
+//var_dump($ThirdRightDownlineOfSecondLeftUsername);
+
+$ThirdRightDownlineOfSecondRight = $users->GetUserInfo($secondRightDownlineLeft);
+$ThirdRightDownlineOfSecondRightfirstName = $ThirdRightDownlineOfSecondRight[0]["firstName"];
+$ThirdRightDownlineOfSecondRightLastName = $ThirdRightDownlineOfSecondRight[0]["lastName"];
+$ThirdRightDownlineOfSecondRightUsername = $ThirdRightDownlineOfSecondRight[0]["username"];
+$ThirdRightDownlineOfSecondRightDownlineLeft = $ThirdRightDownlineOfSecondRight[0]["leftDownline"];
+$ThirdRightDownlineOfSecondRightDownlineRight = $ThirdRightDownlineOfSecondRight[0]["rightDownline"];
+$ThirdRightDownlineOfSecondRightFullName = "".$ThirdRightDownlineOfSecondRightfirstName." ".$ThirdRightDownlineOfSecondRightLastName."";
+
+
+var_dump($ThirdRightDownlineOfSecondLeftDownlineLeft);
+
+$FourthRightDOwnlineOfThirdLeft = $users->GetUserInfo($ThirdLeftDownlineOfSecondRightDownlineRight);
+$FourthRightDOwnlineOfThirdLeftfirstName = $FourthRightDOwnlineOfThirdLeft[0]["firstName"];
+$FourthRightDOwnlineOfThirdLeftLastName = $FourthRightDOwnlineOfThirdLeft[0]["lastName"];
+$fourthRightDownlineOfThirdLeftUsername = $FourthRightDOwnlineOfThirdLeft[0]["username"];
+$FourthRightDOwnlineOfThirdLeftDownlineLeft = $FourthRightDOwnlineOfThirdLeft[0]["leftDownline"];
+$FourthRightDOwnlineOfThirdLeftDownlinRight = $FourthRightDOwnlineOfThirdLeft[0]["rightDownline"];
+$fourthRightDownlineOfThirdLeftFullName = "".$FourthRightDOwnlineOfThirdLeftfirstName." ".$FourthRightDOwnlineOfThirdLeftLastName."";
+
+
+$FourthLeftDownlineOfThirdLeftSecondRight = $users->GetUserInfo($ThirdLeftDownlineOfSecondRightDownlineLeft);
+$FourthLeftDownlineOfThirdLeftSecondRightfirstName = $FourthLeftDownlineOfThirdLeftSecondRight[0]["firstName"];
+$FourthLeftDownlineOfThirdLeftSecondRightLastName = $FourthLeftDownlineOfThirdLeftSecondRight[0]["lastName"];
+$FourthLeftDownlineOfThirdLeftSecondRightUsername = $FourthLeftDownlineOfThirdLeftSecondRight[0]["username"];
+$FourthLeftDownlineOfThirdLeftSecondRightDownlineLeft = $FourthLeftDownlineOfThirdLeftSecondRight[0]["leftDownline"];
+$FourthLeftDownlineOfThirdLeftSecondRightDownlineRight = $FourthLeftDownlineOfThirdLeftSecondRight[0]["rightDownline"];
+$FourthLeftDownlineOfThirdLeftSecondRightFullName = "".$FourthLeftDownlineOfThirdLeftSecondRightfirstName." ".$FourthLeftDownlineOfThirdLeftSecondRightLastName."";
+
+
+$thirdLeftDownlineOfSecondLeft = $users->GetUserInfo($secondLeftDownlineLeft);
+$thirdLeftDownlineOfSecondLeftfirstName = $thirdLeftDownlineOfSecondLeft[0]["firstName"];
+$thirdLeftDownlineOfSecondLeftLastName = $thirdLeftDownlineOfSecondLeft[0]["lastName"];
+$thirdLeftDownlineOfSecondLeftUsername = $thirdLeftDownlineOfSecondLeft[0]["username"];
+$thirdLeftDownlineOfSecondLeftDownlineLeft = $thirdLeftDownlineOfSecondLeft[0]["leftDownline"];
+$thirdLeftDownlineOfSecondLeftDownlineRight = $thirdLeftDownlineOfSecondLeft[0]["rightDownline"];
+$thirdLeftDownlineOfSecondLeftFullName = "".$thirdLeftDownlineOfSecondLeftfirstName." ".$thirdLeftDownlineOfSecondLeftLastName."";
+
+
+//var_dump($secondLeftDownlineLeft);
+$fourthLeftDownlineOfthirdLeft = $users->GetUserInfo($thirdLeftDownlineOfSecondLeftDownlineLeft);
+$fourthLeftDownlineOfthirdLeftfirstName = $fourthLeftDownlineOfthirdLeft[0]["firstName"];
+$fourthLeftDownlineOfthirdLeftLastName = $fourthLeftDownlineOfthirdLeft[0]["lastName"];
+$fourthLeftDownlineOfthirdLeftUsername = $fourthLeftDownlineOfthirdLeft[0]["username"];
+$fourthLeftDownlineOfthirdLeftDownlineLeft = $fourthLeftDownlineOfthirdLeft[0]["leftDownline"];
+$fourthLeftDownlineOfthirdLeftDownlineRight = $fourthLeftDownlineOfthirdLeft[0]["rightDownline"];
+$fourthLeftDownlineOfthirdLeftFullName = "".$fourthLeftDownlineOfthirdLeftfirstName." ".$fourthLeftDownlineOfthirdLeftLastName."";
+//var_dump($secondLeftDownlineRight);
+
+$fourthLeftDownlineOfThirdRight = $users->GetUserInfo($ThirdRightDownlineOfSecondLeftDownlineRight);
+$fourthLeftDownlineOfThirdRightfirstName = $fourthLeftDownlineOfThirdRight[0]["firstName"];
+$fourthLeftDownlineOfThirdRightLastName = $fourthLeftDownlineOfThirdRight[0]["lastName"];
+$fourthLeftDownlineOfThirdRightUsername = $fourthLeftDownlineOfThirdRight[0]["username"];
+$fourthLeftDownlineOfThirdRightDownlineLeft = $fourthLeftDownlineOfThirdRight[0]["leftDownline"];
+$fourthLeftDownlineOfThirdRightDownlineRight = $fourthLeftDownlineOfThirdRight[0]["rightDownline"];
+$fourthLeftDownlineOfThirdRightFullName = "".$fourthLeftDownlineOfThirdRightfirstName." ".$fourthLeftDownlineOfThirdRightLastName."";
+
+//var_dump($fourthLeftDownlineOfThirdRight);
+$fourthRightDownlineOfThirdRight = $users->GetUserInfo($ThirdRightDownlineOfSecondLeftDownlineRight);
+$fourthRightDownlineOfThirdRightfirstName = $fourthRightDownlineOfThirdRight[0]["firstName"];
+$fourthRightDownlineOfThirdRightLastName = $fourthRightDownlineOfThirdRight[0]["lastName"];
+$fourthRightDownlineOfThirdRightUsername = $fourthRightDownlineOfThirdRight[0]["username"];
+$fourthRightDownlineOfThirdRightDownlineLeft = $fourthRightDownlineOfThirdRight[0]["leftDownline"];
+$fourthRightDownlineOfThirdRightDownlineRight = $fourthRightDownlineOfThirdRight[0]["rightDownline"];
+$fourthRightDownlineOfThirdRightFullName = "".$fourthRightDownlineOfThirdRightfirstName." ".$fourthRightDownlineOfThirdRightLastName."";
+
+
+$FourthLeftDownlineOfThirdRightSecondRight = $users->GetUserInfo($FourthLeftDownlineOfThirdLeftSecondRightDownlineLeft);
+$FourthLeftDownlineOfThirdRightSecondRightfirstName = $FourthLeftDownlineOfThirdRightSecondRight[0]["firstName"];
+$FourthLeftDownlineOfThirdRightSecondRightLastName = $FourthLeftDownlineOfThirdRightSecondRight[0]["lastName"];
+$FourthLeftDownlineOfThirdRightSecondRightUsername = $FourthLeftDownlineOfThirdRightSecondRight[0]["username"];
+$FourthLeftDownlineOfThirdRightSecondRightDownlineLeft = $FourthLeftDownlineOfThirdRightSecondRight[0]["leftDownline"];
+$FourthLeftDownlineOfThirdRightSecondRightDowlineRight = $FourthLeftDownlineOfThirdRightSecondRight[0]["rightDownline"];
+$FourthLeftDownlineOfThirdRightSecondRightFullName = "".$FourthLeftDownlineOfThirdRightSecondRightfirstName." ".$FourthLeftDownlineOfThirdRightSecondRightLastName."";
+
+
+$FourthRightDownlineOfThirdRightsecondright = $users->GetUserInfo($ThirdRightDownlineOfSecondRightDownlineRight);
+$FourthRightDownlineOfThirdRightsecondrightfirstName = $FourthRightDownlineOfThirdRightsecondright[0]["firstName"];
+$FourthRightDownlineOfThirdRightsecondrightLastName = $FourthRightDownlineOfThirdRightsecondright[0]["lastName"];
+$FourthRightDownlineOfThirdRightsecondrightUsername = $FourthRightDownlineOfThirdRightsecondright[0]["username"];
+$FourthRightDownlineOfThirdRightsecondrightDownlineLeft = $FourthRightDownlineOfThirdRightsecondright[0]["leftDownline"];
+$FourthRightDownlineOfThirdRightsecondrightDownlineRight = $FourthRightDownlineOfThirdRightsecondright[0]["rightDownline"];
+$FourthRightDownlineOfThirdRightsecondrightFullName = "".$FourthRightDownlineOfThirdRightsecondrightfirstName." ".$FourthRightDownlineOfThirdRightsecondrightLastName."";
+
+
+$one = $users->GetUserInfo($fourthLeftDownlineOfthirdLeftDownlineLeft);
+$onefirstName = $one[0]["firstName"];
+$oneLastName = $one[0]["lastName"];
+$oneUsername = $one[0]["username"];
+$oneDownlineLeft = $one[0]["leftDownline"];
+$oneDownlineRight = $one[0]["rightDownline"];
+$oneFullName = "".$onefirstName." ".$oneLastName."";
+
+
+
+?>
+
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/vendor/jquery-orgchart/orgchart.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+
+<body style="opacity: 1;">
+    <div class="genealogy-actions">
+        <ul class="list-unstyled">
+            <li class="title">Legend:</li>
+            <li class="active">Active</li>
+            <li class="onhold">Onhold</li>
+            <li class="inactive">Inactive</li>
+        </ul>
+    </div>
+    <input type="button" class="pull-right" value="Back" onclick="history.back()">
+
+    <!--    
+        <?php if($leftDownline === null) : ?>
+            HTML HERE
+         <?php elseif($leftDownline) : ?>
+            HTML HERE
+        <?php else : ?>
+            even more html
+        <?php endif; ?>
+
+        <ul>
+            <li class="">
+                <div class="midtext-table">
+                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                </div>
+            </li>
+            <li class="">
+                <div class="midtext-table">
+                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                </div>
+            </li>
+        </ul>
+    -->
+
+    <div id="genealogy" class="hidden">
+        <ul>
+            <li class="">
+                <div class="midtext-table">
+                    <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$username.""; ?>" class="status active "><span><?php echo $username;?></span><?php echo "(".$fullName.")";?></a></div>
+                </div>
+            
+                    <ul>
+                        <?php if($leftDownline === null) : ?>
+                            <li class="">
+                                <div class="midtext-table">
+                                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                </div>
+                            </li>
+                         <?php elseif($leftDownline) : ?>
+                            <li class="">
+                                <div class="midtext-table">
+                                    <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$secondLeftUserName.""; ?>" class="status active "><span><?php echo $secondLeftUserName;?></span><?php echo "(".$secondLeftFullName.")";?></a></div>
+
+                                </div>
+                                <?php if($secondLeftDownlineRight === null && $secondRightDownlineLeft) : ?>
+                                    <ul>
+                                    <li class="">
+                                        <div class="midtext-table">
+                                            <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$thirdLeftDownlineOfSecondLeftUsername.""; ?>" class="status active "><span><?php echo $thirdLeftDownlineOfSecondLeftUsername;?></span><?php echo "(".$thirdLeftDownlineOfSecondLeftFullName.")";?></a></div>
+
+                                        </div>
+
+
+                                            <?php if($fourthLeftDownlineOfThirdRight === null) : ?>
+                                                <ul>
+                                                <li class="">
+                                                    <div class="midtext-table">
+                                                        <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                    </div>
+                                                </li>
+                                                <li class="">
+                                                    <div class="midtext-table">
+                                                        <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                             <?php elseif($leftDownline) : ?>
+                                                <!-- HTML HERE -->
+                                            <?php else : ?>
+                                                even more html
+                                            <?php endif; ?>
+
+                                            
+                                    </li>
+                                    <li class="">
+                                        <div class="midtext-table">
+                                            <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                 <?php elseif($leftDownline) : ?>
+                                    <!-- HTML HERE -->
+                                <?php else : ?>
+                                    even more html
+                                <?php endif; ?>
+
+                                
+                                
+                                <?php if($secondLeftDownlineLeft === null) : ?>
+                                    <ul>
+                                    <li class="">
+                                        <div class="midtext-table">
+                                            <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                        </div>
+                                    </li>
+                                    <li class="">
+                                        <div class="midtext-table">
+                                            <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                 <?php elseif($leftDownline) : ?>
+                                    <!-- HTML HERE-->
+                                <?php else : ?>
+                                    even more html
+                                <?php endif; ?>
+
+                                
+                                
+                            
+                                    <ul>
+                                        <?php if($thirdLeftDownlineOfSecondLeft === null) : ?>
+                                            <li class="">
+                                                <div class="midtext-table">
+                                                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                </div>
+                                            </li>
+
+
+
+                                         <?php elseif($thirdLeftDownlineOfSecondLeftUsername) : ?>
+
+                                            <li class="">
+                                                <div class="midtext-table">
+                                                    <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$thirdLeftDownlineOfSecondLeftUsername.""; ?>" class="status active "><span><?php echo $thirdLeftDownlineOfSecondLeftUsername;?></span><?php echo "(".$thirdLeftDownlineOfSecondLeftFullName.")";?></a></div>
+
+                                                </div>
+                                                <ul>
+
+                                                    <?php if($fourthLeftDownlineOfthirdLeft === null) : ?>
+                                                        <li class="">
+                                                            <div class="midtext-table">
+                                                                <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                            </div>
+                                                        </li>
+
+                                                     <?php elseif($fourthLeftDownlineOfthirdLeft) : ?>
+                                                        <li class="">
+                                                            <div class="midtext-table">
+                                                                <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$fourthLeftDownlineOfthirdLeftUsername.""; ?>" class="status active "><span><?php echo $fourthLeftDownlineOfthirdLeftUsername;?></span><?php echo "(".$fourthLeftDownlineOfthirdLeftFullName.")";?></a></div>
+                                                            </div>
+                                                        </li>
+                                                    <?php else : ?>
+                                                        even more html
+                                                    <?php endif; ?>
+                                                    
+                                                    <?php if($fourthLeftDownlineOfthirdLeft === null) : ?>
+                                                        <li class="">
+                                                            <div class="midtext-table">
+                                                                <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                            </div>
+                                                        </li>
+                                                     <?php elseif($fourthLeftDownlineOfthirdLeft) : ?>
+                                                        <li class="">
+                                                            <div class="midtext-table">
+                                                                
+                                                                <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$fourthLeftDownlineOfthirdLeftUsername.""; ?>" class="status active "><span><?php echo $fourthLeftDownlineOfthirdLeftUsername;?></span><?php echo "(".$fourthLeftDownlineOfthirdLeftFullName.")";?></a></div>
+                                                            </div>
+                                                        </li>
+                                                    <?php else : ?>
+                                                        even more html
+                                                    <?php endif; ?>
+                                                    
+                                                    
+                                                </ul>
+
+                                            </li>
+
+                                        <?php else : ?>
+                                            even more html
+                                        <?php endif; ?>
+                                        
+
+                                            <?php if($fourthRightDownlineOfThirdLeft === null) : ?>
+
+                                                <?php if($ThirdRightDownlineOfSecondLeft === null) : ?>
+                                                    <li class="">
+                                                        <div class="midtext-table">
+                                                            <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                        </div>
+
+                                                    </li>
+                                                 <?php elseif($ThirdRightDownlineOfSecondLeft) : ?>
+                                                    <li class="">
+                                                        <div class="midtext-table">
+                                                            <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$ThirdRightDownlineOfSecondLeftUsername.""; ?>" class="status active "><span><?php echo $ThirdRightDownlineOfSecondLeftUsername;?></span><?php echo "(".$ThirdRightDownlineOfSecondLeftFullName.")";?></a></div>
+                                                        </div>
+                                                        <ul>
+                                                            <?php if($ThirdRightDownlineOfSecondLeftDownlineLeft === null) : ?>
+                                                                <li class="">
+                                                                    <div class="midtext-table">
+                                                                        <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                    </div>
+
+                                                                </li>
+                                                             <?php elseif($ThirdRightDownlineOfSecondLeftDownlineLeft) : ?>
+                                                                <li class="">
+                                                                    <div class="midtext-table">
+                                                                        <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$fourthLeftDownlineOfThirdRight.""; ?>" class="status active "><span><?php echo $fourthLeftDownlineOfThirdRightUsername;?></span><?php echo "(".$fourthLeftDownlineOfThirdRightFullName.")";?></a></div>
+                                                                    </div>
+
+                                                                </li>
+                                                            <?php else : ?>
+                                                                even more html
+                                                            <?php endif; ?>
+                                                            
+
+                                                            <?php if($fourthRightDownlineOfThirdRightUsername === null) : ?>
+                                                                <li class="">
+                                                                    <div class="midtext-table">
+                                                                        <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                    </div>
+
+                                                                </li>
+                                                             <?php elseif($fourthRightDownlineOfThirdRightUsername) : ?>
+                                                                <li class="">
+                                                                    <div class="midtext-table">
+                                                                        
+                                                                        <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$fourthRightDownlineOfThirdRightUsername.""; ?>" class="status active "><span><?php echo $fourthRightDownlineOfThirdRightUsername;?></span><?php echo "(".$fourthRightDownlineOfThirdRightFullName.")";?></a></div>
+                                                                    </div>
+
+                                                                </li>
+                                                            <?php else : ?>
+                                                                even more html
+                                                            <?php endif; ?>
+                                                                
+                                                            </ul>
+
+                                                    </li>
+                                                <?php else : ?>
+                                                    even more html
+                                                <?php endif; ?>
+                                                
+
+                                                
+                                             <?php elseif($fourthRightDownlineOfThirdLeft) : ?>
+                                                <li class="">
+                                                        <div class="midtext-table">
+                                                            <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$fourthRightDownlineOfThirdLeftUsername.""; ?>" class="status active "><span><?php echo $fourthRightDownlineOfThirdLeftUsername;?></span><?php echo "(".$fourthRightDownlineOfThirdLeftFullName.")";?></a></div>
+                                                        </div>
+                                                    </li>
+                                                
+                                            <?php else : ?>
+                                                even more html
+                                            <?php endif; ?>
+                                        </ul>
+                        
+                            </li>
+
+
+                        <?php else : ?>
+                            even more html
+                        <?php endif; ?>
+
+                        <!-- START OF RIGHT DOWNLINE -->
+
+                        <?php if($secondRightUsername === null) : ?>
+                            <li class="">
+                                <div class="midtext-table">
+                                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                </div>
+                            </li>
+                         <?php elseif($secondRightUsername) : ?>
+
+                            <li class="">
+
+                                <?php if($secondRightDownlineLeft === null && $secondLeftDownlineRight == null) : ?>
+                                    <ul>
+                                    <li class="">
+                                        <div class="midtext-table">
+                                            <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                        </div>
+                                    </li>
+                                    <li class="">
+                                        <div class="midtext-table">
+                                            <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                 <?php elseif($secondRightUsername) : ?>
+                                    
+                                <?php else : ?>
+                                    even more html
+                                <?php endif; ?>
+
+                                
+                                <div class="midtext-table">
+                                    <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$secondRightUsername.""; ?>" class="status active "><span><?php echo $secondRightUsername;?></span><?php echo "(".$secondRightFullName.")";?></a></div>
+                                                        </div>
+                                                        <ul>
+                                                            <?php if($secondRightUsername === null) : ?>
+                                                                <li class="">
+                                                                    <div class="midtext-table">
+                                                                        <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                    </div>
+                                                                </li>
+
+                                                             <?php elseif($secondRightUsername) : ?>
+                                                                <?php if($ThirdLeftDownlineOfSecondRight === null) : ?>
+                                                                    
+                                                                        <li class="">
+                                                                            <div class="midtext-table">
+                                                                                <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                            </div>
+                                                                        </li>
+                                                                 <?php elseif($ThirdLeftDownlineOfSecondRight) : ?>
+                                                                        
+                                                                        <li class="">
+                                                                            <div class="midtext-table">
+                                                                                                                            
+                                                                                <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$ThirdLeftDownlineOfSecondRightUsername.""; ?>" class="status active "><span><?php echo $ThirdLeftDownlineOfSecondRightUsername;?></span><?php echo "(".$ThirdLeftDownlineOfSecondRightFullName.")";?></a></div>
+
+                                                                            </div>
+                                                                            <ul>
+
+                                                                                    <?php if($FourthLeftDownlineOfThirdLeftSecondRight === null) : ?>
+                                                                                        <li class="">
+                                                                                            <div class="midtext-table">
+                                                                                                <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                     <?php elseif($FourthLeftDownlineOfThirdLeftSecondRight) : ?>
+                                                                                        <li class="">
+                                                                                            <div class="midtext-table">
+                                                                                                <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$FourthLeftDownlineOfThirdLeftSecondRightUsername.""; ?>" class="status active "><span><?php echo $FourthLeftDownlineOfThirdLeftSecondRightUsername;?></span><?php echo "(".$FourthLeftDownlineOfThirdLeftSecondRightFullName.")";?></a></div>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    <?php else : ?>
+                                                                                        even more html
+                                                                                    <?php endif; ?>
+                                                                                    
+
+                                                                                    <?php if($FourthRightDOwnlineOfThirdLeft === null) : ?>
+                                                                                        <li class="">
+                                                                                            <div class="midtext-table">
+                                                                                                <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                     <?php elseif($FourthRightDOwnlineOfThirdLeft) : ?>
+                                                                                        <li class="">
+                                                                                            <div class="midtext-table">
+                                                                                                <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$FourthLeftDownlineOfThirdLeftSecondRightUsername.""; ?>" class="status active "><span><?php echo $fourthRightDownlineOfThirdLeftUsername;?></span><?php echo "(".$fourthRightDownlineOfThirdLeftFullName.")lol";?></a></div>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    <?php else : ?>
+                                                                                        even more html
+                                                                                    <?php endif; ?>
+                                                                                    
+                                                                                </ul>
+                                                                        </li>
+                                                                <?php else : ?>
+                                                                    even more html
+                                                                <?php endif; ?>
+                                                                
+                                                            <?php else : ?>
+                                                                even more html
+                                                            <?php endif; ?>
+                                                            
+                                                            <?php if($ThirdRightDownlineOfSecondRight === null) : ?>
+
+                                                                <li class="">
+                                                                    <div class="midtext-table">
+                                                                        <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                    </div>
+                                                                </li>
+
+                                                             <?php elseif($ThirdRightDownlineOfSecondRight) : ?>
+                                                                <li class="">
+
+                                                                    <div class="midtext-table">
+                                                                        <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$ThirdRightDownlineOfSecondRightUsername.""; ?>" class="status active "><span><?php echo $ThirdRightDownlineOfSecondRightUsername;?></span><?php echo "(".$ThirdRightDownlineOfSecondRightFullName.")";?></a></div>
+                                                                    </div>
+                                                                     <ul>
+
+
+                                                                        <?php if($FourthLeftDownlineOfThirdRightSecondRight === null) : ?>
+                                                                            <li class="">
+                                                                                <div class="midtext-table">
+                                                                                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                                </div>
+                                                                            </li>
+                                                                         <?php elseif($FourthLeftDownlineOfThirdRightSecondRight) : ?>
+                                                                            <li class="">
+                                                                                <div class="midtext-table">
+                                                                                    <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$FourthLeftDownlineOfThirdRightSecondRightUsername.""; ?>" class="status active "><span><?php echo $FourthLeftDownlineOfThirdRightSecondRightUsername;?></span><?php echo "(".$FourthLeftDownlineOfThirdRightSecondRightFullName.")";?></a></div>
+
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php else : ?>
+                                                                            even more html
+                                                                        <?php endif; ?>
+
+                                                                        <?php if($FourthRightDownlineOfThirdRightsecondright === null) : ?>
+                                                                            <li class="">
+                                                                                <div class="midtext-table">
+                                                                                    <div class="midtext-cell"><span class="status empty">0</span>Empty</div>
+                                                                                </div>
+                                                                            </li>
+                                                                         <?php elseif($FourthRightDownlineOfThirdRightsecondright) : ?>
+                                                                            <li class="">
+                                                                                <div class="midtext-table">
+                                                                                    <div class="midtext-cell"><a href="<?php echo "".$server."/geneology.php?username=".$FourthRightDownlineOfThirdRightsecondrightUsername.""; ?>" class="status active "><span><?php echo $FourthLeftDownlineOfThirdRightSecondRightUsername;?></span><?php echo "(".$FourthLeftDownlineOfThirdRightSecondRightFullName.")";?></a></div>
+
+                                                                                </div>
+                                                                            </li>
+                                                                        <?php else : ?>
+                                                                            even more html
+                                                                        <?php endif; ?>
+                                                                        
+                                                                    </ul>
+                                                                </li>
+                                                            <?php else : ?>
+                                                                even more html
+                                                            <?php endif; ?>
+                                                            
+                                                        </ul>
+                                </div>
+
+
+                            </li>
+                        <?php else : ?>
+                            even more html
+                        <?php endif; ?>
+                        
+                    </ul>
+                
+            </li>
+        </ul>
+    </div>
+    <div id="genealogy_append" data-id="21052">
+    </div>
+</body>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/vendor/jquery-orgchart/jquery.orgchart.min.js"></script>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+        $('#genealogy > ul').orgChart({
+            container: $('#genealogy_append')
+        });
+
+        $('.node').hover(function() {
+            $(this).closest('table').addClass('node-hover');
+        }, function() {
+            $(this).closest('table').removeClass('node-hover');
+        });
+    });
+})(jQuery);
+</script>
+
+</html>

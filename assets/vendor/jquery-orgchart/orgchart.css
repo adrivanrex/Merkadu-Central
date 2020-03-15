@@ -1,0 +1,28 @@
+div.orgChart { margin: 20px 0 0; padding: 0; }
+div.orgChart h2 { margin: 0px; font-size: 12px; border-bottom: none; font-weight: 500; height: 100%; width: 100%; }
+div.orgChart h2 span { display: block; margin-bottom: 5px; }
+div.orgChart h2 a { color: #37474f; }
+div.orgChart ul { list-style: none; margin: 4px; padding: 0px; font-size: 0.8em; text-align: left; }
+div.orgChart ul.stack,
+div.orgChart ul.stack ul { text-align: center; }
+div.orgChart table { width: 100%; }
+div.orgChart tr.lines td.line { width: 1px; height: 20px; }
+div.orgChart tr.lines td.top { border-top: 3px solid #727F86; }
+div.orgChart tr.lines td.left { border-right: 2px solid #727F86; }
+div.orgChart tr.lines td.right { border-left: 2px solid #727F86; }
+div.orgChart td { text-align: center; vertical-align: top; padding: 0px 2px; }
+div.orgChart div.node { margin-bottom: -7px; cursor: default; border: 2px solid #727F86; display: inline-block; padding: 0 4px; width: 100px; height: 80px; line-height: 1.3em; border-radius: 3px; box-shadow: inset 0 0 1px rgba(0,0,0,.02); -moz-border-radius: 3px; -moz-box-shadow: inset 0 0 1px rgba(0,0,0,.02); -webkit-border-radius: 3px; -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,.02); }
+div.orgChart div.hasChildren { }
+div.orgChart.interactive div.hasChildren { cursor: pointer; }
+div.orgChart div.node.hover { background-color: white; }
+div.orgChart div.adjunct.node { position: absolute; margin-top: 8px; margin-left: -110px; width: 80px; height: 40px; background-color: #efefef; }
+div.orgChart div.adjunct-link { display: inline-block; position: absolute; margin-left: -20px; margin-top: 25px; width: 20px; border: 1px dashed black; }
+
+.midtext-table { height: 100%; width: 100%; display: table; }
+.midtext-cell { display: table-cell; vertical-align: middle; }
+
+@media (max-width: 420px) { 
+    div.orgChart div.node { height: 60px; width: 90px; }
+    div.orgChart h2 a { font-size: 11px; }
+    div.orgChart tr.lines td.line { height: 10px; }
+}
