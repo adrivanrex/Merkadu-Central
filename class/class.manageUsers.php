@@ -22,114 +22,84 @@ class ManageUsers{
         $lockedTime = $datetime;
         $unlockTime = $datetime;
         $reg_time = $datetime;
+        //echo $username;
+        $fullname = "$firstName $middleName $lastName";
 
 
-        $query = $this->link->query("SELECT * FROM userinfo WHERE firstName='$firstName'");
-        $firstNameResult = $query->fetchAll(); 
-        $firstNameCounts = $query->rowCount();
-        if($firstNameCounts){
-            $firstNameA = $firstNameResult[0]["firstName"];
-        }else{
-            $firstNameA = null;
-        }
-        
+        /* firstNameA */
 
-        
+        $query = $this->link->query("SELECT * FROM userinfo WHERE firstname='$firstName'");
+        $result = $query->fetchAll(); 
+        $rowcount = $query->rowCount();
+        $firstNameA = $result[0]["firstName"];
+
+        /* middleNameA */
 
         $query = $this->link->query("SELECT * FROM userinfo WHERE middleName='$middleName'");
-        $middleNameResult = $query->fetchAll();
-        $middleNameCounts = $query->rowCount();
-        if($middleNameCounts){  
-            $middleNameA = $middleNameResult[0]["middleName"];
-        }else{
-            $middleNameA = null;
-        }
+        $result = $query->fetchAll(); 
+        $rowcount = $query->rowCount();
+        $middleNameA = $result[0]["middleName"];
 
+        /* lastNameA */
 
         $query = $this->link->query("SELECT * FROM userinfo WHERE lastName='$lastName'");
-        $lastNameCounts = $query->rowCount();
-        $lastNameResult = $query->fetchAll();  
-        if($lastNameCounts){
-            $lastNameA = $lastNameResult[0]["lastName"];
-        }else{
-            $lastNameA = null;
+        $result = $query->fetchAll(); 
+        $rowcount = $query->rowCount();
+        $lastNameA = $result[0]["lastName"];
+
+        $fullnameA = "$firstNameA $middleNameA $lastNameA";
+
+
+        if(strtolower($fullname) !== strtolower($fullnameA)){
+
+        //echo "not same name";
+        $query = $this->link->prepare("INSERT INTO users (username,password,firstName,middleName,lastName,mobileNumber,email,sponsor,upline,placement,reg_time,registrationCode,unlockTime,lockedTime,year,month,day) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $values = array($username,$password,$firstName,$middleName,$lastName,$mobileNumber,$email,$sponsor,$upline,$placement,$reg_time,$registrationCode,$lockedTime,$unlockTime,$bdayYear,$bdayMonth,$bdayDay);
+        $query->execute($values);
+        $counts = $query->rowCount();
+        $accountLock = false;
+
+        $status = "Open";
+
+         $query = $this->link->prepare("INSERT INTO userinfo (username,firstName,middleName,lastName,mobileNumber,email,sponsor,upline,placement,registrationCode,reg_time,country,continent,currency,streetAddress,secondAddress,state,postalCode,city,role,accountLock,lockedTime,unlockTime,bdayYear,bdayMonth,bdayDay,gender,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $values = array($username,$firstName,$middleName,$lastName,$mobileNumber,$email,$sponsor,$upline,$placement,$registrationCode,$reg_time,$country,$continent,$currency,$streetAddress,$secondAddress,$state,$postalCode,$city,$role,$accountLock,$lockedTime,$unlockTime,$bdayYear,$bdayMonth,$bdayDay,$gender,$status);
+        $query->execute($values);
+
+        $query = $this->link->query("SELECT * FROM userinfo WHERE username='$upline'");
+        $result = $query->fetchAll(); 
+        $rowcount = $query->rowCount();
+        $leftDownline = $result[0]["leftDownline"];
+        $rightDownline = $result[0]["rightDownline"];
+
+        if($leftDownline === NULL){
+            if($placement === "left"){
+            $query = $this->link->query("UPDATE userinfo SET leftDownline ='$username' WHERE username='$upline'");
+            $rowcount = $query->rowCount();
+        
+            }
+
+        }
+
+        if($rightDownline === NULL){
+            if($placement === "right"){
+                $query = $this->link->query("UPDATE userinfo SET rightDownline ='$username' WHERE username='$upline'");
+                $rowcount = $query->rowCount();
+                
+            }
+
         }
         
+        $startingBalance = 3000;
+        $balance = $startingBalance;
+        $query = $this->link->prepare("INSERT INTO balance (username,balance,availableBalance) VALUES (?,?,?)");
 
-        $fullnameA = "".$firstNameA." ".$middleNameA." ".$lastNameA."";
+        $values = array($username,$balance,$balance);
+        $query->execute($values);
+        
+        return $counts;
 
-        $fullname = "".$firstName." ".$middleName." ".$lastName."";
-         //var_dump($fullname);
-
-
-        if($fullname !== $fullnameA){
-            
-            if($middleName !== $middleNameA){
-                    
-
-                if(strtolower($fullname) !== strtolower($fullnameA)){
-                    //echo "not same name";
-                    $query = $this->link->prepare("INSERT INTO users (username,password,firstName,middleName,lastName,mobileNumber,email,sponsor,upline,placement,reg_time,registrationCode,unlockTime,lockedTime,year,month,day) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $values = array($username,$password,$firstName,$middleName,$lastName,$mobileNumber,$email,$sponsor,$upline,$placement,$reg_time,$registrationCode,$lockedTime,$unlockTime,$bdayYear,$bdayMonth,$bdayDay);
-                    $query->execute($values);
-                    $counts = $query->rowCount();
-                    $accountLock = false;
-
-                    $status = "Open";
-
-                     $query = $this->link->prepare("INSERT INTO userinfo (username,firstName,middleName,lastName,mobileNumber,email,sponsor,upline,placement,registrationCode,reg_time,country,continent,currency,streetAddress,secondAddress,state,postalCode,city,role,accountLock,lockedTime,unlockTime,bdayYear,bdayMonth,bdayDay,gender,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $values = array($username,$firstName,$middleName,$lastName,$mobileNumber,$email,$sponsor,$upline,$placement,$registrationCode,$reg_time,$country,$continent,$currency,$streetAddress,$secondAddress,$state,$postalCode,$city,$role,$accountLock,$lockedTime,$unlockTime,$bdayYear,$bdayMonth,$bdayDay,$gender,$status);
-                    $query->execute($values);
-
-                    $query = $this->link->query("SELECT * FROM userinfo WHERE username='$upline'");
-                    $result = $query->fetchAll(); 
-                    $rowcount = $query->rowCount();
-                    $leftDownline = $result[0]["leftDownline"];
-                    $rightDownline = $result[0]["rightDownline"];
-
-                    if($leftDownline === NULL){
-                        if($placement === "left"){
-                        $query = $this->link->query("UPDATE userinfo SET leftDownline ='$username' WHERE username='$upline'");
-                        $rowcount = $query->rowCount();
-                    
-                        }
-
-                    }
-
-                    if($rightDownline === NULL){
-                        if($placement === "right"){
-                            $query = $this->link->query("UPDATE userinfo SET rightDownline ='$username' WHERE username='$upline'");
-                            $rowcount = $query->rowCount();
-                            
-                        }
-
-                    }
-                    
-                    $startingBalance = 3000;
-                    $balance = $startingBalance;
-                    $query = $this->link->prepare("INSERT INTO balance (username,balance,availableBalance) VALUES (?,?,?)");
-
-                    $values = array($username,$balance,$balance);
-                    $query->execute($values);
-                    
-                    return $counts;
-                }
-
-                if(strtolower($fullname) == strtolower($fullnameA)){
-                    $priority = "top case";
-                    $issue = "Duplicate Name";
-                    $datetime = date_create()->format('Y-m-d H:i:s');
-                    $query = $this->link->prepare("INSERT INTO sec.accounts (issue,username,fullname,date,priority) VALUES (?,?,?,?,?)");
-
-                    $values = array($issue,$username,$fullnameA,$datetime,$priority);
-                    $query->execute($values);
-                    $counts = $query->rowCount();
-                    return 2;
-                }
-
-
-            }else{
-                $issue = "Duplicate Name";
+        }else{
+            $issue = "Duplicate Name";
                 $datetime = date_create()->format('Y-m-d H:i:s');
                 $query = $this->link->prepare("INSERT INTO sec.accounts (issue,username,fullname,date) VALUES (?,?,?,?)");
 
@@ -138,13 +108,8 @@ class ManageUsers{
                 $counts = $query->rowCount();
 
                 return 2;
-            }
         }
-
-
-
-
-        //return 0;
+       
 
 
     }

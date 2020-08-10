@@ -1,4 +1,6 @@
 <?php
+ini_set('memory_limit', '1G'); // or you could use 1G
+//error_reporting(0);
 include_once('../class/class.manageUsers.php');
 $datetime = date_create()->format('Y-m-d H:i:s');
 
@@ -54,6 +56,7 @@ $checkUpline = $users->CheckUserExist($upline);
 $checkRegistrationCode = $users->checkRegistrationCode($registrationCode);
 
 //var_dump($checkUpline);
+
 if($checkUser == 0){
 		//var_dump($checkUpline);
 	if($placement == "left" || $placement == "right"){	
@@ -78,7 +81,7 @@ if($checkUser == 0){
 
 					//var_dump($registration);
 					if($registration == 2){
-						$data = (object) array('registration' => 2,'message' => "Duplicate Name");
+						$data = (object) array('registration' => 2,'message' => "Registered!!");
 						echo json_encode($data);
 					}
 
@@ -100,6 +103,9 @@ if($checkUser == 0){
 						array_push($uplines,$username);
 
 						$key = true;
+						//echo "test";
+						echo json_encode($data);
+
 						 while($key){
 						        $myLastElement = end($uplines);
 						        if($myLastElement === "none"){

@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/vendor/jquery-orgchart/orgchart.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- + -->
+</head>
+<script>
+
+
+membershipFee = 8880;
+referalPrecentage = 5.6;
+
+function register(membershipFee, id, sponsorID, placementID, placement) {
+
+
+}
+
+
+function referalPercentage(membershipFee, amount) {
+    percentage = amount / membershipFee * 100;
+    return percentage;
+}
+
+function referalFee(membershipFee, referalPercentage) {
+    referalPercentage = Number(referalPercentage);
+    percent = referalPercentage / 100;
+    referalFormula = membershipFee * percent;
+    referalFee = referalFormula;
+    return referalFee;
+
+}
+
+
+
+referalFee(membershipFee, referalPrecentage);
+
+
+
+// Append the text to <li>
+</script>
+
+<body style="opacity: 1;">
+    <div class="genealogy-actions">
+        <ul class="list-unstyled">
+            <li class="title">Legend:</li>
+            <li class="active">Active</li>
+            <li class="onhold">Onhold</li>
+            <li class="inactive">Inactive</li>
+        </ul>
+    </div>
+    <div id="genealogy" class="hidden">
+    </div>
+    <div id="genealogy_append" data-id="1">
+    </div>
+</body>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/vendor/jquery-orgchart/jquery.orgchart.min.js"></script>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+
+            var username = localStorage.getItem("username");
+            var password = localStorage.getItem("password");
+            const Http = new XMLHttpRequest();
+            var server = "http://mlm/";
+
+            const url = ''+server+'/graph/userinfo.php?username=' + username + '&password=' + password + '';
+            console.log(url);
+            Http.open("GET", url);
+
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+
+                if (Http.readyState == 4 && Http.status == 200) {
+                    console.log(JSON.parse(Http.responseText));
+                    data = JSON.parse(Http.responseText);
+                    
+                };
+            };
+
+
+            member = {
+                id: 1,
+                firstName: "rex",
+                lastName: "adrivan",
+            }
+
+            fullName = '' + member.firstName + ' ' + member.lastName + '';
+            data = localStorage.getItem("data");
+            console.log("test", data);
+
+            /** DIV ID geneology **/
+            server = window.location.hostname;
+
+            z = document.querySelector('#genealogy');
+
+            d = document.createElement('ul');
+            d = z.appendChild(d);
+            firstMatrix = document.createElement('li');
+            e = d.appendChild(firstMatrix);
+            e.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>Name </a></div></div>';
+
+            firstMatrixDownlineLeft = 1;
+
+            if(firstMatrixDownlineLeft == null){
+                f = document.createElement('ul');
+                g = firstMatrix.appendChild(f);
+                h = document.createElement('li');
+                i = f.appendChild(h);
+                i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+            }else{
+                f = document.createElement('ul');
+                g = firstMatrix.appendChild(f);
+                h = document.createElement('li');
+                i = f.appendChild(h);
+                i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>first matrix downline left </a></div></div>';
+
+                secondMatrixLeftDownline = 1;
+                if(secondMatrixLeftDownline == null){
+                    w = document.createElement('ul');
+                    g = h.appendChild(w);
+                    k = document.createElement('li');
+                    i = g.appendChild(k);
+                    i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                }else{
+                    w = document.createElement('ul');
+                    g = h.appendChild(w);
+                    k = document.createElement('li');
+                    i = g.appendChild(k);
+                    i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline left </a></div></div>';
+
+
+
+                    
+
+
+                    thirdMatrixDownlineLeft = {};
+                    thirdMatrixDownlineLeft.downlineLeft = 1;
+
+
+                    if(thirdMatrixDownlineLeft.downlineLeft == null){
+                        xa = document.createElement('ul');
+                        p = k.appendChild(xa);
+                        ca = document.createElement('li');
+                        i = p.appendChild(ca);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+
+                    }else{
+                        xa = document.createElement('ul');
+                        p = k.appendChild(xa);
+                        ca = document.createElement('li');
+                        i = p.appendChild(ca);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline left </a></div></div>';
+                    }
+
+                    thirdMatrixDownlineLeft.downlineRight = 1;
+                    if(thirdMatrixDownlineLeft.downlineRight == null){
+                        cab = document.createElement('li');
+                        i = p.appendChild(cab);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                    }else{
+                        cab = document.createElement('li');
+                        i = p.appendChild(cab);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline left </a></div></div>';
+                    }
+                    
+                    
+                    
+                }
+                
+                secondMatrixRightDownline = 1;
+                if(secondMatrixRightDownline == null){
+                    w = document.createElement('ul');
+                    p = k.appendChild(w);
+                    k = document.createElement('li');
+                    i = g.appendChild(k);
+                    i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                }else{
+                    w = document.createElement('ul');
+                    p = k.appendChild(w);
+                    k = document.createElement('li');
+                    i = g.appendChild(k);
+                    i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>third matrix downline right </a></div></div>';
+
+                    thirdMatrixDownlineRight = {};
+                    thirdMatrixDownlineRight.downlineLeft = 1;
+
+                    if(thirdMatrixDownlineRight.downlineLeft == null){
+                        x = document.createElement('ul');
+                        p = k.appendChild(x);
+                        c = document.createElement('li');
+                        i = p.appendChild(c);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                    }else{
+                        x = document.createElement('ul');
+                        p = k.appendChild(x);
+                        c = document.createElement('li');
+                        i = p.appendChild(c);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>third matrix downline right </a></div></div>';
+                    }
+                    
+
+                    
+                    
+                    thirdMatrixDownlineRight.downlineRight = 1;
+                    if(thirdMatrixDownlineRight.downlineRight == null){
+                        c = document.createElement('li');
+                        i = p.appendChild(c);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                    }else{
+                        c = document.createElement('li');
+                        i = p.appendChild(c);
+                        i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>third matrix downline right </a></div></div>';
+                    }
+                    
+
+                    
+
+                }
+
+                
+
+
+            }
+
+            firstMatrixDownlineRight = 1;
+            if(firstMatrixDownlineRight == null){
+                j = document.createElement('ul');
+                g = firstMatrix.appendChild(j);
+                h = document.createElement('li');
+                o = f.appendChild(h);
+                o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+            }else{
+                j = document.createElement('ul');
+                g = firstMatrix.appendChild(j);
+                h = document.createElement('li');
+                o = f.appendChild(h);
+                o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>first matrix downline right </a></div></div>';
+
+                secondMatrixDownlineRight = 1;
+                if(secondMatrixDownlineRight == null){
+                    ja = document.createElement('ul');
+                    g = h.appendChild(ja);
+                    ha = document.createElement('li');
+                    o = g.appendChild(ha);
+                    o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                }else{
+                    ja = document.createElement('ul');
+                    g = h.appendChild(ja);
+                    ha = document.createElement('li');
+                    o = g.appendChild(ha);
+                    o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline left </a></div></div>';
+
+                     thirdMatrixDownlineLeft.thirdMatrixDownlineLeft = 1;
+                    if(thirdMatrixDownlineLeft.thirdMatrixDownlineLeft == null){
+                        qa = document.createElement('ul');
+                        ga = ha.appendChild(qa);
+                        bt = document.createElement('li');
+                        o = qa.appendChild(bt);
+                        o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                    }else{
+                        qa = document.createElement('ul');
+                        ga = ha.appendChild(qa);
+                        bt = document.createElement('li');
+                        o = qa.appendChild(bt);
+                        o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>third matrix downline left </a></div></div>';
+
+                        thirdMatrixDownlineRight.downline = 1;
+                        if(thirdMatrixDownlineRight.downline == null){
+                             ct = document.createElement('li');
+                            o = qa.appendChild(ct);
+                            o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                        }else{
+                             ct = document.createElement('li');
+                                o = qa.appendChild(ct);
+                                o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>third matrix downline right </a></div></div>';
+                        }
+                       
+
+
+                    } 
+                }
+                
+
+
+
+                secondMatrixDownlineLeft = 1;
+                if(secondMatrixDownlineLeft == null){
+                    ka = document.createElement('ul');
+                    ga = ha.appendChild(ka);
+                    hag = document.createElement('li');
+                    o = g.appendChild(hag);
+                    o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                }else{
+                    ka = document.createElement('ul');
+                    ga = ha.appendChild(ka);
+                    hag = document.createElement('li');
+                    o = g.appendChild(hag);
+                    o.innerHTML = '<div class="30midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline right </a></div></div>';
+
+                    thirdMatrixDownlineRight.downlineLeft = 1;
+                    if(thirdMatrixDownlineRight.downlineLeft == null){
+                        ba = document.createElement('ul');
+                        ga = hag.appendChild(ba);
+                        qo = document.createElement('li');
+                        o = ba.appendChild(qo);
+                        o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+                    }else{
+                        ba = document.createElement('ul');
+                        ga = hag.appendChild(ba);
+                        qo = document.createElement('li');
+                        o = ba.appendChild(qo);
+                        o.innerHTML = '<div class="30midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline right </a></div></div>';
+                    }
+
+                    thirdMatrixDownlineRight.downlineRight = null;
+                    if(thirdMatrixDownlineRight.downlineRight == null){
+
+                        qop = document.createElement('li');
+                        o = ba.appendChild(qop);
+                        o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+
+                    }else{
+                        qop = document.createElement('li');
+                        o = ba.appendChild(qop);
+                        o.innerHTML = '<div class="30midtext-table"><div class="midtext-cell"><a href="'+server+'/geneaology.php?id='+ member.id + '" class="status active "><span>1</span>second matrix downline right </a></div></div>';
+
+                    }
+                    
+                    
+
+                
+
+                }
+
+
+                    
+            }
+
+            
+
+        
+
+        
+
+
+        $('#genealogy > ul').orgChart({
+            container: $('#genealogy_append')
+        });
+
+        $('.node').hover(function() {
+            $(this).closest('table').addClass('node-hover');
+        }, function() {
+            $(this).closest('table').removeClass('node-hover');
+        });
+    });
+})(jQuery);
+</script>
+
+</html>

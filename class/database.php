@@ -4,7 +4,7 @@
         protected $db_conn;
         public $db_name = 'mlm';
         public $db_user = 'root';
-        public $db_pass = 'rexadrivan';
+        public $db_pass = '';
         public $db_host = 'localhost';
 
         function connect(){

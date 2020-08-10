@@ -261,7 +261,7 @@ function MainCtrl($scope) {
                                 $scope.encashCodeList = data.data;
                                     console.log("scope",$scope.encashCodeList);
                                     $scope.apply;
-                                    $scope.digest();
+                                    //$scope.digest();
                             }
 
 

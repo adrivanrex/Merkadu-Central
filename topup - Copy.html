@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>haylo</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/css/signin.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+   <div class="container">
+
+  <!--form class="form-signin" form role="form" action="hola.html" name="formlogin" method="post" class="login-form"-->
+  <form class="form-signin" class="login-form">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputAmount" class="sr-only">Amount</label>
+    <input type="text" id="inputAmount" class="form-control" placeholder="Amount" required="" autofocus="">
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="">
+    <a href="#" id="submit-form" class="btn btn-lg btn-primary btn-block">send</a>
+  </form>
+
+</div>
+<!-- /container -->
+<script>
+  document.getElementById("submit-form").addEventListener("click", check_info);
+
+function check_info() {
+  var amount = document.getElementById("inputAmount").value;
+  var username = document.getElementById("inputUsername").value;
+   const Http = new XMLHttpRequest();
+    const url = 'topup.php?username=' + username + '&amount=' + amount + '';
+    Http.open("GET", url);
+
+    Http.send();
+
+    Http.onreadystatechange = (e) => {
+      topup = JSON.parse(Http.responseText);
+      if(topup.update == 1){
+        alert("success");
+      }else{
+        alert("failed to topup");
+      }
+    }
+  
+}
+</script>
+</body>
+
+</html>

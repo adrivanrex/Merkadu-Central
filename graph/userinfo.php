@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include_once('../class/class.manageUsers.php');
 $datetime = date_create()->format('Y-m-d H:i:s');
 
@@ -35,7 +36,13 @@ switch ($checkLogin) {
 		echo json_encode($data);
         break;
     default:
-        echo "Your favorite color is neither red, blue, nor green!";
+        $GetUserInfo = $users->GetUserInfo($username);
+        $checkBalance = $users->checkBalance($username);
+        $directReferalTotalBalance = $users->directReferalTotalBalance($username);
+        $pointsLeft = $users->points($username,"left");
+        $pointsRight = $users->points($username,"right");
+        $data = (object) array('login' => 1,'details' => $GetUserInfo[0],'balance' =>$checkBalance,'directReferalTotalBalance' =>$directReferalTotalBalance,'pointsLeft' => $pointsLeft,'pointsRight' => $pointsRight);
+        echo json_encode($data);
 }
 
 

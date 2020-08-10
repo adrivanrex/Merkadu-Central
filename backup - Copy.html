@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="robots" content="noindex, follow">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/vendor/jquery-orgchart/orgchart.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- + -->
+</head>
+<script>
+member1 = {
+    username: "adrivan",
+    id: 1,
+    firstName: "Rex",
+    lastName: "Adrivan",
+    directSponsorID: 0,
+    placement: "left",
+    points: 90,
+    status: "active",
+    downlineLeftID: null,
+    downlineRightID: 3,
+
+
+};
+
+downlineLeft = {
+    username: "kriz",
+    id: 2,
+    directSponsorID: 1,
+    placementSponsorID: 1,
+    placement: "left",
+    points: 90,
+    status: "active",
+}
+
+downlineRight = {
+    username: "Teofilo",
+    id: 3,
+    directSponsorID: 2,
+    placementSponsorID: 2,
+    placement: "left",
+    points: 90,
+    status: "active",
+    firstName: "Teofilo",
+    lastName: "Adrivan",
+}
+
+
+members = [];
+members.push(member1, member2, member3, member3);
+
+
+
+function getDownlines(sponsorID) {
+
+
+}
+
+
+membershipFee = 8880;
+referalPrecentage = 5.6;
+
+function register(membershipFee, id, sponsorID, placementID, placement) {
+
+
+}
+
+
+function referalPercentage(membershipFee, amount) {
+    percentage = amount / membershipFee * 100;
+    return percentage;
+}
+
+function referalFee(membershipFee, referalPercentage) {
+    referalPercentage = Number(referalPercentage);
+    percent = referalPercentage / 100;
+    referalFormula = membershipFee * percent;
+    referalFee = referalFormula;
+    return referalFee;
+
+}
+
+
+
+/**
+
+function percentTodecimal(percent){
+    
+    decimal = percent/100;
+    return decimal;
+
+};
+
+**/
+
+
+referalFee(membershipFee, referalPrecentage);
+// Append the text to <li>
+</script>
+
+<body style="opacity: 1;">
+    <div class="genealogy-actions">
+        <ul class="list-unstyled">
+            <li class="title">Legend:</li>
+            <li class="active">Active</li>
+            <li class="onhold">Onhold</li>
+            <li class="inactive">Inactive</li>
+        </ul>
+    </div>
+    <div id="genealogy" class="hidden">
+    </div>
+    <div id="genealogy_append" data-id="1">
+    </div>
+</body>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/vendor/jquery-orgchart/jquery.orgchart.min.js"></script>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+
+
+
+
+
+        function processUplineData(member) {
+
+            fullName = '' + member.firstName + ' ' + member.lastName + '';
+
+            /** DIV ID geneology **/
+            server = window.location.hostname;
+
+            z = document.querySelector('#genealogy');
+
+            d = document.createElement('ul');
+            d = z.appendChild(d);
+            firstMatrix = document.createElement('li');
+            e = d.appendChild(firstMatrix);
+            e.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="' + member.id + '" class="status active "><span>1</span>Name </a></div></div>';
+
+            firstMatrixDownlineLeft = 1;
+
+
+            if(firstMatrixDownlineLeft == null){
+                f = document.createElement('ul');
+                secondMatrixLeft = firstMatrix.appendChild(f);
+                h = document.createElement('li');
+                i = f.appendChild(h);
+                i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+            }else{
+                f = document.createElement('ul');
+                secondMatrixLeft = firstMatrix.appendChild(f);
+                h = document.createElement('li');
+                i = f.appendChild(h);
+                i.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="' + member.id + '" class="status active "><span>1</span>first matrix downline left </a></div></div>';
+
+
+
+
+            }
+
+            firstMatrixDownlineRight = 1;
+
+            if(firstMatrixDownlineRight == null){
+                j = document.createElement('ul');
+                secondMatrixRight = firstMatrix.appendChild(j);
+                h = document.createElement('li');
+                o = f.appendChild(h);
+                o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><span class="status empty">0</span>Empty</div></div>';
+            }else{
+                j = document.createElement('ul');
+                secondMatrixRight = firstMatrix.appendChild(j);
+                h = document.createElement('li');
+                o = f.appendChild(h);
+                o.innerHTML = '<div class="midtext-table"><div class="midtext-cell"><a href="' + member.id + '" class="status active "><span>1</span>first matrix downline right </a></div></div>';
+
+
+            }
+
+
+
+
+
+        };
+
+    
+        processUplineData(member1);
+
+        $('#genealogy > ul').orgChart({
+            container: $('#genealogy_append')
+        });
+
+        $('.node').hover(function() {
+            $(this).closest('table').addClass('node-hover');
+        }, function() {
+            $(this).closest('table').removeClass('node-hover');
+        });
+    });
+})(jQuery);
+</script>
+
+</html>
